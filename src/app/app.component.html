@@ -3,12 +3,15 @@
     <div class="card-body">
       <h3 class="card-title">Parent Component (AppComponent)</h3>
       <input type="text" class="form-control w-75" [(ngModel)]="parentText" />
-      <p>This is the message from the Child:</p>
+      <p>This is the message from the Child: {{ receivedChildText }}</p>
 
       <div class="container">
         <div class="row">
           <div class="col">
-            <app-child [inputText] = "parentText"></app-child>
+            <app-child
+              [inputText]="parentText"
+              (outputText)="receiveMessage($event)"
+            ></app-child>
           </div>
         </div>
       </div>
